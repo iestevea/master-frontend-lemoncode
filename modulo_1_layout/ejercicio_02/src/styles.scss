@@ -1,0 +1,44 @@
+// @import "blue-theme";
+@import "red-theme";
+
+.container {
+  display: grid;
+  grid-template-columns: 150px;
+  grid-template-rows: repeat(3, 150px) 50px 50px 100px;
+
+  .box {
+    border-radius: 5px;
+    border: 1px solid $border-color;
+    padding: 1rem;
+    margin: 0.5rem 0;
+
+    &.base-color {
+      background-color: $base-color;
+    }
+    &.important-color {
+      background-color: $important-color;
+    }
+    &.warning-color {
+      background-color: $warning-color;
+    }
+
+    &.with-shadow {
+      box-shadow: $box-shadow;
+    }
+  }
+
+  p {
+    &.principal-font {
+      font: {
+        family: $principal-font-family;
+        weight: $principal-font-weight;
+      }
+    }
+    &.secondary-font {
+      font: {
+        family: $secondary-font-family;
+        weight: $secondary-font-weight;
+      }
+    }
+  }
+}

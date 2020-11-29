@@ -1,0 +1,46 @@
+@use "sass:list";
+
+$text-base-color: white;
+$colors: red, blue, green;
+$tones: 10%, 20%, 30%, 40%;
+
+@each $color in $colors {
+  .grid-container {
+    display: grid;
+    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(9, 100px);
+    grid-gap: 1rem;
+
+    &.#{"" + $color} {
+      .base-color {
+        background-color: $color;
+        .color-box-text {
+          color: $text-base-color;
+        }
+      }
+
+      .box {
+        border-radius: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @for $i from 1 through 4 {
+        .darken-#{$i} {
+          background-color: darken($color, list.nth($tones, $i));
+          .color-box-text {
+            color: darken($text-base-color, list.nth($tones, $i));
+          }
+        }
+
+        .lighten-#{$i} {
+          background-color: lighten($color, list.nth($tones, $i));
+          .color-box-text {
+            color: lighten($text-base-color, list.nth($tones, $i));
+          }
+        }
+      }
+    }
+  }
+}
