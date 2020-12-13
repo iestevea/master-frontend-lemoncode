@@ -20,18 +20,25 @@ const deepGet = (obj, ...props) => {
 
   const [prop, ...rest] = props;
   if (obj.hasOwnProperty(prop)) {
-    if (rest.length === 0) {
-      // console.log(obj[prop]);
-      return obj[prop]; // DUDA: porque console.log(obj[prop]) me devuelve bien el resultado, pero el return me devuelve undefined ¿?
-    } else {
-      deepGet(obj[prop], ...rest);
-    }
+    return rest.length === 0 ? obj[prop] : deepGet(obj[prop], ...rest);
   }
+  // if (props.length === 0) {
+  //   return obj;
+  // } else {
+  //   const [prop, ...rest] = props;
+  //   for (let p in obj) {
+  //     if (p === prop) {
+  //       return deepGet(obj[p], ...rest);
+  //     }
+  //   }
+  // }
+
 }
 
 console.log(deepGet(myObj, 'x'));
 console.log(deepGet(myObj, 'a'));
 console.log(deepGet(myObj, 'b'));
+console.log(deepGet(myObj, 'b', 'd', 'e'));
 console.log(deepGet(myObj, 'b', 'c'));
 console.log(deepGet(myObj, 'b', 'd', 'f', 'g'));
 console.log(deepGet(myObj));
@@ -49,7 +56,7 @@ const deepSet = (value, obj, ...props) => {
   if (rest.length === 0) {
     obj[prop] = value;
   } else {
-    obj[prop] = {...obj[prop]};
+    obj[prop] = { ...obj[prop] };
     deepSet(value, obj[prop], ...rest);
   }
 }
