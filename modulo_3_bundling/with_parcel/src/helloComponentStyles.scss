@@ -1,0 +1,11 @@
+$text-color: black;
+$background: indianred;
+
+.hello-wrapper {
+  background-color: $background;
+  color: $text-color;
+}
+
+img {
+  max-width: 150px;
+}
