@@ -5,15 +5,24 @@ const expensiveFunction = () => {
   return 3.1415;
 }
 
-const memoize = (fn) => {
-  let cache = {};
-  return () => {
-    if (!cache[0]) {
-      cache[0] = fn();
-    }
-    return cache[0];
-  }
-};
+// const memoize = (fn) => {
+// -- FIRST IMPLEMENTATION
+// let cache;
+// return () => {
+//   if (!cache) {
+//     cache = fn();
+//   }
+//   return cache;
+// }
+// -- SECOND IMPLEMENTATION
+// let cache;
+// return () => cache || (cache = fn(), cache);
+// -- THIRD IMPLEMENTATION
+// return () => fn.cache || (fn.cache = fn(), fn.cache);
+// };
+
+const memoize = (fn) => () => fn.cache || (fn.cache = fn(), fn.cache)
+
 
 const memoized = memoize(expensiveFunction);
 
@@ -26,20 +35,36 @@ let count = 0;
 const repeatText = (repetitions: number, text: string): string =>
   (count++, `${text} `.repeat(repetitions).trim())
 
+
+const deepSet = (value, obj, ...props) => {
+  if (!props.length) {
+    return obj;
+  }
+
+  const [prop, ...rest] = props;
+  if (rest.length === 0) {
+    obj[prop] = value;
+  } else {
+    obj[prop] = { ...obj[prop] };
+    deepSet(value, obj[prop], ...rest);
+  }
+}
+
+export const deepGet = (obj, ...props) => {
+  if (!props.length) {
+    return obj;
+  }
+
+  const [prop, ...rest] = props;
+  if (obj.hasOwnProperty(prop)) {
+    return rest.length === 0 ? obj[prop] : deepGet(obj[prop], ...rest);
+  }
+
+}
+
 const memoizeWithArgs = (fn) => {
   let cache = {};
-  return (a, b) => {
-    cache[a] = cache[a] || {};
-    if (Object.values(cache[a]).length > 0) {
-      if (!cache[a][b]) {
-        cache[a][b] = fn(a, b);
-      }
-      return cache[a][b];
-    } else {
-      cache[a][b] = fn(a, b);
-      return cache[a][b];
-    }
-  }
+  return (...args) => deepGet(cache, ...args) || (deepSet(fn(...args), cache, ...args), deepGet(cache, ...args))
 };
 
 const memoizedGreet = memoizeWithArgs(repeatText);
