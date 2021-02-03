@@ -14,6 +14,7 @@ import { defineComponent } from "vue";
 import { routeStrings } from "@/router/index";
 
 export default defineComponent({
+  name: 'Header',
   data: () => ({
     routeGithub: routeStrings
   })
@@ -32,15 +33,18 @@ export default defineComponent({
 }
 .header-wrapper > * + * {
   padding-left: 1rem;
-  width: 100%;
 }
 .header-wrapper > img {
   max-height: 50%;
   border-radius: 45%;
 }
+.header-wrapper > h1 {
+  flex-grow: 1;
+}
 .header-links {
   display: flex;
   justify-content: flex-end;
+  width: fit-content;
 }
 .header-links > a {
   text-decoration: none;
