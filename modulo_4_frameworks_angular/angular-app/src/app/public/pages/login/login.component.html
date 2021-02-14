@@ -1,0 +1,44 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <form #loginForm="ngForm">
+    <mat-card-content>
+      <div>
+        <label>Nombre de usuario:</label>
+        <input
+          name="username"
+          [(ngModel)]="user.username"
+          required
+          #username="ngModel"
+        />
+        <div *ngIf="username.invalid && username.touched">
+          El nombre es obligatorio
+        </div>
+      </div>
+      <div>
+        <label>Contraseña:</label>
+        <input
+          name="password"
+          [(ngModel)]="user.password"
+          required
+          #password="ngModel"
+          minlength="8"
+        />
+        <div *ngIf="password.invalid && password.touched">
+          <div *ngIf="password.errors?.required">
+            La contraseña es obligatoria
+          </div>
+          <div *ngIf="password.errors?.minLength">
+            La contraseña debe tener mínimo
+            {{ password.errors?.minLength?.requiredLength }} caracteres
+          </div>
+        </div>
+      </div>
+      {{ user | json }}
+    </mat-card-content>
+    <mat-card-actions>
+      <button [disabled]="loginForm.invalid" (click)="login()">Login</button>
+    </mat-card-actions>
+  </form>
+</mat-card>
