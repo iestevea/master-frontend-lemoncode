@@ -13,9 +13,10 @@ import { CrudComponent } from './pages/crud/crud.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { RotateDirective } from '../directives/rotate.directive';
 
 @NgModule({
-  declarations: [PrivateMenuComponent, CrudComponent, DashboardComponent, GalleryComponent, ProfileComponent],
+  declarations: [PrivateMenuComponent, CrudComponent, DashboardComponent, GalleryComponent, ProfileComponent, RotateDirective],
   imports: [
     CommonModule,
     AppRoutingModule,
@@ -25,7 +26,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [PrivateMenuComponent]
 })

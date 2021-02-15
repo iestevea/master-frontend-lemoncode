@@ -1,1 +1,22 @@
-<p>gallery works!</p>
+<div class="gallery-container">
+  <div class="main-image">
+    <img width="80" step="20" [appRotate]="45" [src]="images[selectedImage -1].src"/>
+  </div>
+  <div class="list-images">
+    <div
+      *ngFor="let image of images | slice: beginSlice:endSlice"
+      (click)="renderImg(image.id)"
+      class="list-images__item"
+    >
+        <img [class.selected]="image.id === selectedImage" [src]="image.src" />
+    </div>
+  </div>
+  <div class="actions">
+    <button [disabled]="selectedImage === 1" (click)="previousImage()">Anterior</button>
+    <button [disabled]="selectedImage === images.length" (click)="nextImage()">Siguiente</button>
+    <button (click)="increase($event)">Aumentar</button>
+    <button (click)="decrease($event)">Disminuir</button>
+    <button (click)="play()">Play</button>
+    <button [disabled]="!this.interval" (click)="stop()">Stop</button>
+  </div>
+</div>
