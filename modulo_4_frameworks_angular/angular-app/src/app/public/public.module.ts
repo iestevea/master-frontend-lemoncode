@@ -13,6 +13,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from '../app-routing.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -22,6 +26,10 @@ import { AppRoutingModule } from '../app-routing.module';
   imports: [
     CommonModule,
     AppRoutingModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     MatCardModule,
     MatToolbarModule,
     MatButtonModule,

@@ -17,7 +17,6 @@ describe('PublicMenuComponent', () => {
     TestBed.configureTestingModule({
       declarations: [PublicMenuComponent],
       imports: [
-        NoopAnimationsModule,
         LayoutModule,
         MatButtonModule,
         MatIconModule,

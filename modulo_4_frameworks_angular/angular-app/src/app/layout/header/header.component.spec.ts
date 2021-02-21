@@ -7,15 +7,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { PrivateMenuComponent } from './private-menu.component';
+import { HeaderComponent } from './header.component';
 
-describe('PrivateMenuComponent', () => {
-  let component: PrivateMenuComponent;
-  let fixture: ComponentFixture<PrivateMenuComponent>;
+describe('HeaderComponent', () => {
+  let component: HeaderComponent;
+  let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [PrivateMenuComponent],
+      declarations: [HeaderComponent],
       imports: [
         LayoutModule,
         MatButtonModule,
@@ -28,7 +28,7 @@ describe('PrivateMenuComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PrivateMenuComponent);
+    fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

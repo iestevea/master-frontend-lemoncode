@@ -1,44 +1,54 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title>Login</mat-card-title>
-  </mat-card-header>
-  <form #loginForm="ngForm">
-    <mat-card-content>
-      <div>
-        <label>Nombre de usuario:</label>
-        <input
-          name="username"
-          [(ngModel)]="user.username"
-          required
-          #username="ngModel"
-        />
-        <div *ngIf="username.invalid && username.touched">
+<div class="login-container">
+  <mat-card class="example-card" *ngIf="!isLoading">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <form #loginForm="ngForm" class="login-form">
+      <mat-card-content>
+        <mat-form-field class="full-width">
+          <mat-label>Nombre de usuario:</mat-label>
+          <input
+            matInput
+            name="username"
+            [(ngModel)]="user.username"
+            required
+            #username="ngModel"
+          />
+        </mat-form-field>
+        <div class="error-message" *ngIf="username.invalid && username.touched">
           El nombre es obligatorio
         </div>
-      </div>
-      <div>
-        <label>Contraseña:</label>
-        <input
-          name="password"
-          [(ngModel)]="user.password"
-          required
-          #password="ngModel"
-          minlength="8"
-        />
-        <div *ngIf="password.invalid && password.touched">
+        <mat-form-field class="full-width">
+          <mat-label>Contraseña:</mat-label>
+          <input
+            matInput
+            name="password"
+            [(ngModel)]="user.password"
+            required
+            #password="ngModel"
+            minlength="8"
+            type="password"
+          />
+        </mat-form-field>
+        <div class="error-message" *ngIf="password.invalid && password.touched">
           <div *ngIf="password.errors?.required">
             La contraseña es obligatoria
           </div>
-          <div *ngIf="password.errors?.minLength">
+          <div *ngIf="password.errors?.minlength">
             La contraseña debe tener mínimo
-            {{ password.errors?.minLength?.requiredLength }} caracteres
+            {{ password.errors?.minlength?.requiredLength }} caracteres
           </div>
         </div>
-      </div>
-      {{ user | json }}
-    </mat-card-content>
-    <mat-card-actions>
-      <button [disabled]="loginForm.invalid" (click)="login()">Login</button>
-    </mat-card-actions>
-  </form>
-</mat-card>
+        <button
+          color="primary"
+          mat-raised-button
+          [disabled]="loginForm.invalid"
+          (click)="login()"
+        >
+          Login
+        </button>
+      </mat-card-content>
+    </form>
+  </mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>

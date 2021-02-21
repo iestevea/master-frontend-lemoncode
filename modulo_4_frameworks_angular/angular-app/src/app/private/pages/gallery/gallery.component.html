@@ -1,6 +1,6 @@
 <div class="gallery-container">
   <div class="main-image">
-    <img width="80" step="20" [appRotate]="45" [src]="images[selectedImage -1].src"/>
+    <img width="80" step="20" id="imgSelected" [appRotate]="45" [src]="images[selectedImage -1].src"/>
   </div>
   <div class="list-images">
     <div
@@ -14,8 +14,8 @@
   <div class="actions">
     <button [disabled]="selectedImage === 1" (click)="previousImage()">Anterior</button>
     <button [disabled]="selectedImage === images.length" (click)="nextImage()">Siguiente</button>
-    <button (click)="increase($event)">Aumentar</button>
-    <button (click)="decrease($event)">Disminuir</button>
+    <button (click)="increase()">Aumentar</button>
+    <button (click)="decrease()">Disminuir</button>
     <button (click)="play()">Play</button>
     <button [disabled]="!this.interval" (click)="stop()">Stop</button>
   </div>

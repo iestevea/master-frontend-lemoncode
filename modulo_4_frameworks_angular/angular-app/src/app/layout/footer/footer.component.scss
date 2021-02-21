@@ -1,0 +1,13 @@
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  p {
+    margin: 0 1rem;
+    font-weight: bold;
+  }
+  img {
+    max-height: 50%;
+  }
+}

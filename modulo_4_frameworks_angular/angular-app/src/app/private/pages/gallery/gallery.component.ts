@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ImageItem } from 'src/app/model/image-item';
 import { ImagesService } from 'src/app/services/images.service';
 
@@ -10,6 +10,7 @@ import { ImagesService } from 'src/app/services/images.service';
 export class GalleryComponent implements OnInit {
 
   images: ImageItem[] = [];
+  imgElement: HTMLElement | null = null;
   selectedImage: number = 1;
   interval: any;
   beginSlice: number = 0;
@@ -20,6 +21,7 @@ export class GalleryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.imgElement = document.getElementById("imgSelected");
   }
 
   nextImage() {
@@ -38,12 +40,12 @@ export class GalleryComponent implements OnInit {
     }
   }
 
-  increase(target: any) {
-    console.log(target)
+  increase() {
+    (this.imgElement as HTMLImageElement).style.transform = 'scale(1.5)';
   }
 
-  decrease(target: any) {
-
+  decrease() {
+    (this.imgElement as HTMLImageElement).style.transform = 'scale(0.5)';
   }
 
   restart() {
@@ -65,7 +67,6 @@ export class GalleryComponent implements OnInit {
   }
 
   stop() {
-    console.log(this.interval);
     clearInterval(this.interval);
     this.interval = null;
   }

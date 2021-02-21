@@ -8,10 +8,4 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'angular-app';
-
-  isLogged = false;
-
-  constructor(service: AuthService) {
-    this.isLogged = service.isLogged();
-  }
 }

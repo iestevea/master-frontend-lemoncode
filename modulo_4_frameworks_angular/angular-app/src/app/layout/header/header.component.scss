@@ -1,0 +1,39 @@
+.sidenav-container {
+  width: 100%;
+  height: calc(100vh - 80px);
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.main-toolbar {
+  display: flex;
+  img {
+    margin: 0 0.5rem;
+    max-height: 70%;
+    border-radius: 50%;
+  }
+}
+
+.user-info {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  .username {
+    font-size: 12px;
+    margin-right: 1rem;
+  }
+}
+
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}

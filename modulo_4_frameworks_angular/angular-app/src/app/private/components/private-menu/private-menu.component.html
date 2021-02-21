@@ -1,35 +1,4 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    #drawer
-    class="sidenav"
-    fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
-  >
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a routerLink="/dashboard" mat-list-item>Dashboard</a>
-      <a routerLink="/gallery" mat-list-item>Galería</a>
-      <a routerLink="/profile" mat-list-item>Perfil</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary" class="main-toolbar">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>angular-app</span>
-      <img src="../../../../assets/female_dev_icon.png"/>
-      <span class="username">{{username}}</span>
-      <button (click)="logout()">Logout</button>
-    </mat-toolbar>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<a routerLink="/dashboard" mat-list-item>Dashboard</a>
+<a routerLink="/gallery" mat-list-item>Galería</a>
+<a routerLink="/crud" mat-list-item>CRUD</a>
+<a routerLink="/profile" mat-list-item>Perfil</a>
