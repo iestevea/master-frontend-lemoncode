@@ -1,8 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { DetailPage } from "../../detail";
-import { ListPage } from "../../list";
-import { LoginPage } from "../../login";
 import {
   EmployeeDetailScene,
   EmployeesListScene,

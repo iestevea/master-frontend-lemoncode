@@ -1,6 +1,12 @@
 <div class="gallery-container">
   <div class="main-image">
-    <img width="80" step="20" id="imgSelected" [appRotate]="45" [src]="images[selectedImage -1].src"/>
+    <img
+      width="80"
+      step="20"
+      id="imgSelected"
+      [appRotate]="45"
+      [src]="images[selectedImage - 1].src"
+    />
   </div>
   <div class="list-images">
     <div
@@ -8,15 +14,40 @@
       (click)="renderImg(image.id)"
       class="list-images__item"
     >
-        <img [class.selected]="image.id === selectedImage" [src]="image.src" />
+      <img [class.selected]="image.id === selectedImage" [src]="image.src" />
     </div>
   </div>
   <div class="actions">
-    <button [disabled]="selectedImage === 1" (click)="previousImage()">Anterior</button>
-    <button [disabled]="selectedImage === images.length" (click)="nextImage()">Siguiente</button>
-    <button (click)="increase()">Aumentar</button>
-    <button (click)="decrease()">Disminuir</button>
-    <button (click)="play()">Play</button>
-    <button [disabled]="!this.interval" (click)="stop()">Stop</button>
+    <button
+      color="primary"
+      mat-raised-button
+      [disabled]="selectedImage === 1"
+      (click)="previousImage()"
+    >
+      Anterior
+    </button>
+    <button
+      color="primary"
+      mat-stroked-button
+      [disabled]="selectedImage === images.length"
+      (click)="nextImage()"
+    >
+      Siguiente
+    </button>
+    <button color="primary" mat-raised-button (click)="increase()">
+      Aumentar
+    </button>
+    <button color="primary" mat-stroked-button (click)="decrease()">
+      Disminuir
+    </button>
+    <button color="accent" mat-raised-button (click)="play()">Play</button>
+    <button
+      color="warn"
+      mat-raised-button
+      [disabled]="!this.interval"
+      (click)="stop()"
+    >
+      Stop
+    </button>
   </div>
 </div>
