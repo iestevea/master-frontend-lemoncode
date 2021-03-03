@@ -27,7 +27,7 @@ describe('Login specs', () => {
 
     // Assert
     cy.findAllByText('Debe informar el campo').then((texts) => {
-      expect(texts).to.have.length(2)
+      expect(texts).to.have.length(3)
     });
   })
 
