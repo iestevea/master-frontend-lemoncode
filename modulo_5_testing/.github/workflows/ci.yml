@@ -14,7 +14,7 @@ jobs:
         run: npm run build
       - name: Tests
         run: npm test
-        - name: Test e2e
+      - name: Test e2e
         run: npm run test:e2e:ci
       - name: Upload screenshots when specs fail
         if: ${{failure()}}
@@ -28,4 +28,3 @@ jobs:
         with:
           name: videos
           path: ./cypress/videos
-
